@@ -1,92 +1,56 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
-import type {Node} from 'react';
+import React, { Component } from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
 import Button from './src/components/Button'
 import Display from './src/components/Display'
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
+export default class App extends Component {
   state = {
     displayValue: '0'
   }
 
+  addDigit = n => {
+    this.setState({ displayValue: n })
+  }
+
+  clearMemory = () => {
+    this.setState({ displayValue: '0' })
+  }
+
+  setOperation = operation => {
+
+  }
+
+  render() {
   return (
     <View style={styles.container}>
       <Display value={this.state.displayValue} />
       <View style={styles.buttons}>
-        <Button label='AC' />
-        <Button label='/' />
-        <Button label='7' />
-        <Button label='8' />
-        <Button label='9' />
-        <Button label='*' />
-        <Button label='4' />
-        <Button label='5' />
-        <Button label='6' />
-        <Button label='-' />
-        <Button label='1' />
-        <Button label='2' />
-        <Button label='3' />
-        <Button label='+' />
-        <Button label='0' />
-        <Button label='.' />
-        <Button label='=' />
+        <Button label='AC' triple onClick={this.clearMemory} />
+        <Button label='/' operation onClick={this.setOperation} />
+        <Button label='7' onClick={this.addDigit} />
+        <Button label='8' onClick={this.addDigit} />
+        <Button label='9' onClick={this.addDigit} />
+        <Button label='*' operation onClick={this.setOperation} />
+        <Button label='4' onClick={this.addDigit} />
+        <Button label='5' onClick={this.addDigit} />
+        <Button label='6' onClick={this.addDigit} />
+        <Button label='-' operation onClick={this.setOperation} />
+        <Button label='1' onClick={this.addDigit} />
+        <Button label='2' onClick={this.addDigit} />
+        <Button label='3' onClick={this.addDigit} />
+        <Button label='+' operation onClick={this.setOperation} />
+        <Button label='0' double onClick={this.addDigit} />
+        <Button label='.' onClick={this.addDigit} />
+        <Button label='=' operation onClick={this.setOperation} />
       </View>
     </View>
-  );
-};
+  )
+}}
 
 const styles = StyleSheet.create({
   container: {
@@ -96,6 +60,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   }
-});
-
-export default App;
+})
