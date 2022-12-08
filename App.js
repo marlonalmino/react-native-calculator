@@ -27,6 +27,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Button from './src/components/Button'
+import Display from './src/components/Display'
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -57,14 +58,13 @@ const Section = ({children, title}): Node => {
 };
 
 const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  state = {
+    displayValue: '0'
+  }
 
   return (
     <View style={styles.container}>
+      <Display value={this.state.displayValue} />
       <View style={styles.buttons}>
         <Button label='AC' />
         <Button label='/' />
