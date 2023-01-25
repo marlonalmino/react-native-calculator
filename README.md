@@ -15,4 +15,4 @@ O projeto simula uma calculadora simples baseada na calculadora do iOS
 `npx react-native run-android` para inicializar a aplicação no emulador
 
 ## Demonstração
-<img src="https://i.snipboard.io/HubBUD.jpg" alt="drawing" width="200"/>
+<img src="https://i.imgur.com/PDLsmkz.gif" alt="drawing" width="200"/>
